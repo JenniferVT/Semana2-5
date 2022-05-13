@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca de Babel</title>
+</head>
+<body>
+    <form action="./Libro.php" method="post">
+        <fieldset>
+            <legend>Introduce tu búsqueda a la Torre de Babel</legend>
+
+            <label for="buscar">Buscar:</label>
+            <input type="text" id="buscar" name="buscar" placeholder="Búsqueda">
+            <br/><br/>
+
+            <label for="zona">Zona horaria de tu preferencia:</label>
+            <select name="zona">
+                <option>New York</option>
+                <option>Ciudad de Mexico</option>
+                <option>Tokio</option>
+                <option>Londres</option>
+                <option>Hong Kong</option>
+            </select>
+            <br/><br/>
+
+            <label for="modo">Modo:</label>
+            <select name="modo">
+                <option value="normal">Normal</option>
+                <option value="palabras">Palabras</option>
+                <option value="orden">Orden</option>
+            </select>
+            <br/><br/>
+
+            <button type="submit">Enviar</button>
+            <button type="reset">Borrar Formulario</button>
+
+</body>
+</html>
