@@ -1,0 +1,110 @@
+@font-face {
+    font-family: "Fuente 2";
+    src: url(../fonts/Nunito_Sans/NunitoSans-Light.ttf);
+}
+
+@font-face {
+    font-family: "Mi fuente";
+    src: url(../fonts/Oleo_Script_Swash_Caps/OleoScriptSwashCaps-Bold.ttf);
+}
+
+html,
+body {
+    background-color: #E5E2DC;
+    margin: 0;
+    padding: 0;
+    position: static;
+    font-family: "Fuente 2", sans-serif;
+}
+
+
+/* Sección para el header */
+
+header {
+    background-color: #A279D1;
+    width: 100%;
+    height: 50px;
+    position: sticky;
+    top: 0;
+    padding: 10px;
+    text-align: center;
+    font-size: 40px;
+    font-family: "Mi fuente", "Lucida Handwriting", cursive;
+}
+
+
+/* contenedor de la info de la página */
+
+div.content {
+    display: flex;
+}
+
+.imagen {
+    margin-right: 30px;
+}
+
+
+/* imagen en círculo */
+
+img {
+    border-radius: 50%;
+}
+
+aside {
+    width: 40%;
+    float: left;
+    background-color: #C4B1D9;
+    border-left: 1px solid white;
+    padding: 20px;
+    text-align: justify;
+}
+
+section {
+    float: right;
+    padding: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.descripcion {
+    width: 600px;
+    height: 100px;
+    margin: 10px;
+    background-color: #907BE8;
+    font-size: 20px;
+    border-style: inset;
+    border-color: #6873B3;
+    overflow: auto;
+    padding: 10px;
+}
+
+.caja {
+    width: 300px;
+    height: 300px;
+    background-color: #C4B1D9;
+    margin: 20px;
+    padding: 10px;
+}
+
+
+/* Pseudoclase para las cajas */
+
+.caja:hover {
+    cursor: pointer;
+    opacity: 0.5;
+    background: #907BE8;
+}
+
+
+/* Sección para el footer */
+
+footer {
+    background-color: #A279D1;
+    width: 100%;
+    height: 50px;
+    position: sticky;
+    bottom: 0;
+    padding: 10px;
+}
