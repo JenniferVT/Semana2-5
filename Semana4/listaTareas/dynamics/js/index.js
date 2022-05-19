@@ -6,7 +6,7 @@ const ulTasks = document.getElementById("ulTasks");
 const divMessage = document.getElementById("divMessage");
 const divSummary = document.getElementById("divSummary");
 
-const tasks = [];
+var tasks = [];
 
 selectSubject.addEventListener("change", (event) => {
     console.log(event);
@@ -35,7 +35,7 @@ buttonAdd.addEventListener("click", (event) => {
                 tasks.push({
                     task: inputTask.value,
                     subject: inputSubject.value,
-                    order: tasks.length - 1,
+                    order: tasks.length,
                     isDone: false
                 });
             }
@@ -43,7 +43,7 @@ buttonAdd.addEventListener("click", (event) => {
             tasks.push({
                 task: inputTask.value,
                 subject: selectSubject.options[selectSubject.selectedIndex].text,
-                order: tasks.length - 1
+                order: tasks.length
             });
         }
     }
@@ -64,6 +64,15 @@ function hideMessage() {
 function showTasks() {
     ulTasks.innerHTML = "";
     let tasksDone = 0
+    tasks = tasks.sort(function(a, b) {
+        if (a.order > b.order) {
+            return 1;
+        }
+        if (a.order < b.order) {
+            return -1;
+        }
+        return 0;
+    });
     for (var i = 0; i < tasks.length; i++) {
         const liTask = document.createElement("li");
         const divTask = document.createElement("div");
@@ -78,8 +87,11 @@ function showTasks() {
         buttonMoveTaskUp.innerHTML = "Arriba";
         buttonMoveTaskUp.classList.add("button");
         buttonMoveTaskUp.index = i;
+        buttonMoveTaskUp.disabled = (buttonMoveTaskUp.index == 0);
         buttonMoveTaskUp.addEventListener("click", (event) => {
-            alert("click en arriba");
+            tasks[buttonMoveTaskUp.index - 1].order = tasks[buttonMoveTaskUp.index].order;
+            tasks[buttonMoveTaskUp.index].order = tasks[buttonMoveTaskUp.index].order - 1;
+            showTasks();
         });
         divTask.appendChild(buttonMoveTaskUp);
 
@@ -87,8 +99,11 @@ function showTasks() {
         buttonMoveTaskDown.innerHTML = "Abajo";
         buttonMoveTaskDown.classList.add("button");
         buttonMoveTaskDown.index = i;
+        buttonMoveTaskDown.disabled = (buttonMoveTaskDown.index == tasks.length - 1)
         buttonMoveTaskDown.addEventListener("click", (event) => {
-            alert("click en abajo");
+            tasks[buttonMoveTaskUp.index + 1].order = tasks[buttonMoveTaskUp.index].order;
+            tasks[buttonMoveTaskUp.index].order = tasks[buttonMoveTaskUp.index].order + 1;
+            showTasks();
         });
         divTask.appendChild(buttonMoveTaskDown);
 
@@ -121,41 +136,4 @@ function showTasks() {
         ulTasks.appendChild(liTask);
     }
     divSummary.innerHTML = `${tasksDone} tarea(s) acabada(s) de ${tasks.length}`;
-    // for (let i = 0; i < tasks.length; i++) {
-    //     const liTask = document.createElement("li");
-    //     const divTask = document.createElement("div");
-
-    //     divTask.classList.add("task");
-    //     divTask.appendChild(document.createTextNode(tasks[i].order));
-
-    //     divTask.appendChild(document.createTextNode(tasks[i].task));
-
-    //     divTask.appendChild(document.createTextNode(tasks[i].subject));
-
-
-
-
-
-    //     liTask.appendChild(divTask);
-    //     ulTasks.appendChild(liTask);
-    // }
 }
-
-// var agregarTarea = function() {
-//     if (tarea === "")
-//         alert("Agregar tarea");
-//     return false;
-// };
-// //Agregar tarea
-
-// agregar.addEventListener("click", (evento) => {
-//     lista.innerHTML += '<li>' + input.value + '<button class="boton">Borrar</button></li>';
-// });
-// //Borrar tarea
-// lista.addEventListener("click", (evento) => {
-//     if (evento.target.className === 'boton') {
-//         evento.target.parentElement.outerHTML = '';
-//     }
-// });
-// //comprobar input
-// input.addEventListener("click", comprobarInput);
