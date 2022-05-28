@@ -1,0 +1,21 @@
+
+#La carpeta ContenidoSecreto
+**/ContenidoSecreto
+
+#El archivo config ya que posee información confidencial
+**/config.php
+
+#Todos los archivos con extensión pdf dentro de los assets, pero no los que se encuentran en la carpeta docs
+assets/**/*.pdf
+
+#Todos los archivos de extensión txt pues no poseen información importante
+**/*.txt
+
+#Todas las imágenes a excepción de las esenciales para el sistema
+assets/media/images/**
+!assets/media/images/*-system.*
+
+#Todos los archivos marcados con la bandera -prueba o -local 
+*-local*
+*-prueba*
+!*-experimento*
